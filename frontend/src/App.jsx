@@ -75,10 +75,11 @@ const App = () => {
   }
   const deletePerson = (id) => {
       personService.deletePerson(id).then(response => {
-      console.log(response)
+      console.log(target)
+      const target = persons.find(person => person.id === id)
       setPersons(persons.filter(person => person.id !== id))
       setNotificationType(0)
-      setNotification(`${response} was deleted`)
+      setNotification(`${target.name} was deleted`)
       resetNotification()
     })
     .catch(error => {
